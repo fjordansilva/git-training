@@ -111,7 +111,7 @@
 							<li>Cada rama/tag creado sólo hace una instantánea respecto al estado anterior.</li>
 						</ul>
 						<a href="#" class="image">
-							<img width="40%" height="40%" src="images/Sistemas-Distribuidos.png" alt="Sistemas Distribuidos" />
+							<img width="35%" height="35%" src="images/Sistemas-Distribuidos.png" alt="Sistemas Distribuidos" />
 						</a>
 					</section>
 				</section>
@@ -261,7 +261,68 @@
 							<img width="275px" height="63px" src="images/logoSourceTree.png" style="background-color:white" alt="Logo de GIT" />
 						</a>
 					</section>
+					
+					<section>
+						<h2>Servidor GIT</h2>
+						<p>Podremos trabajar con cualquier servidor GIT. Algunos de los más populares son:</p>
+						<br />
+						<ul>
+							<li>GitHub - <a href="http://www.github.com" target="_blank">http://www.github.com</a></li>
+							<li>BitBucket - <a href="https://bitbucket.org/" target="_blank">https://bitbucket.org/</a></li>
+							<li>Connectis GitLab - <a href="https://gitlab.connectis-ict.es/" target="_blank">https://gitlab.connectis-ict.es</a></li>
+						</ul>
+					</section>
 				</section>
+				
+				<section>
+					<section>
+						<h2>Creación de las claves SSH</h2>
+						Explicar como crear las claves SSH y los 3 archivos a guardar
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Creación de un repositorio</h2>
+						Explicar como se crea un repo en GitLab y como añadir a usuarios / claves por usuario.
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Clonado de un Repositorio con SourceTree</h2>
+						
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Operaciones disponibles con GIT</h2>
+						Explicar las operaciones de clonado, commit, push, pull, checkout, merge / rebase...
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Operaciones GIT con SourceTree</h2>
+						Explicar las operaciones de clonado, commit, push, pull, checkout, merge... realizadas con SourceTree
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Git Flow</h2>
+						Qué es el Git Flow y que implicaciones tiene.
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Metodología de trabajo</h2>
+						Metodología de trabajo con GIT en Connectis.
+					</section>
+				</section>
+				
 				
 				<!-- Example of nested vertical slides -->
 				<section>
@@ -569,14 +630,20 @@ function linkify( selector ) {
 				controls: true,
 				progress: true,
 				history: true,
+				center: true,	
+				slideNumber: true,		
+				hideAddressBar: true,
 				center: true,
-
+				
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
+				width: 1024,
+				height: 700,
+				
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+				// parallaxBackgroundSize: '4200px 1800px',
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
@@ -588,7 +655,6 @@ function linkify( selector ) {
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
-
 		</script>
 
 	</body>
