@@ -223,8 +223,8 @@
 							Para empezar a trabajar con GIT necesitaremos las siguientes herramientas:											
 						</p>
 						<ul>
-							<li><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Suit Putty</a> (Windows)</li>
-							<li><a href="http://www.sourcetreeapp.com/" target="_blank">SourceTree</a></li>
+							<li><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Suite Putty</a> (Windows)</li>
+							<li><a href="http://www.sourcetreeapp.com/" target="_blank">SourceTree</a> (Windows / Mac)</li>
 						</ul>
 					</section>
 					<section>
@@ -242,7 +242,7 @@
 						</blockquote>
 						<br />
 						<blockquote>
-							Las claves SSH permiten identificar que dos ordenadores se identifiquen entre si, sin la necesidad de introducir contraseñas.
+							Las claves SSH permiten que dos ordenadores se identifiquen entre si, sin la necesidad de introducir contraseñas.
 						</blockquote>
 					</section>
 					<section>
@@ -252,7 +252,7 @@
 						</p>
 						<br />
 						<ul>
-							<li>Cliente con UI muy descriptiva que muestra todas las ramas creadas y las interacciones entre ellas</li>
+							<li>Cliente con UI muy descriptiva que muestra todas las ramas/tags creadas y las interacciones entre ellas</li>
 							<li>Permite navegar de forma visual por el histórico del proyecto</li>
 							<li>Permite realizar comandos complejos con un simple clic del ratón</li>
 							<li>Ampliamente extendido y compatible tanto con GIT como con Mercurial.</li>
@@ -269,29 +269,109 @@
 						<ul>
 							<li>GitHub - <a href="http://www.github.com" target="_blank">http://www.github.com</a></li>
 							<li>BitBucket - <a href="https://bitbucket.org/" target="_blank">https://bitbucket.org/</a></li>
-							<li>Connectis GitLab - <a href="https://gitlab.connectis-ict.es/" target="_blank">https://gitlab.connectis-ict.es</a></li>
+							<li>Servidor GIT propio - <a href="https://about.gitlab.com/" target="_blank">GitLab</a></li>
 						</ul>
 					</section>
 				</section>
 				
 				<section>
 					<section>
-						<h2>Creación de las claves SSH</h2>
-						Explicar como crear las claves SSH y los 3 archivos a guardar
+						<h2>Creación de un repositorio</h2>
+						<p>
+							Tarea que se realiza al inicio del proyecto o durante la vida del proyecto si se subdivide en distintos módulos. Como ejemplo vamos a crear un proyecto en GitLab:
+						</p>
+						<a href="#" class="image">
+							<img width="90%" height="90%" src="images/NuevoRepositorio.png" alt="Nuevo repositorio" />
+						</a>
 					</section>
 				</section>
 				
 				<section>
 					<section>
-						<h2>Creación de un repositorio</h2>
-						Explicar como se crea un repo en GitLab y como añadir a usuarios / claves por usuario.
+						<h2>Creación de las claves SSH</h2>
+						<p>
+							La autenticación con GIT la podemos realizar de dos formas: claves SSH o mediante login/password.
+						</p>
+						<br />
+						<p>
+							La autenticación mediante claves SSH es preferible en términos de seguridad y comodidas para el usuario, ya que una 
+							vez generados los juegos de claves pública / privada e informado al servidor, el cliente SourceTree se encargará de 
+							todo lo relativo a la autenticación.
+						</p>
 					</section>
+					<section>
+						<h2>Creación de las claves SSH</h2>
+						<p>
+							La URL del repositorio nos indica el tipo de login a realizar:
+						</p>
+						<br />
+						<ol>
+							<li class="fragment"><code>git@git.connectis-ict.es:aireuropa_casillero_digital/mod-middleware.git</code></li>
+							<li class="fragment"><code>https://gitlab.connectis-ict.es/aireuropa_casillero_digital/mod-middleware.git</code></li>
+						</ol>			
+					</section>
+					<section>
+						<h2>Creación de las claves SSH</h2>
+						<p>
+							Creación de las claves SSH en Windows:
+						</p>
+						<br />
+						<a href="#" class="image">
+							<img width="1024px" height="500px" src="images/puttygen.gif" alt="Creación claves SSH" />
+						</a>			
+					</section>
+					<section>
+						<h2>Creación de las claves SSH</h2>
+						<p>
+							Como resultado de la creación de las claves SSH en Windows obtendremos 3 archivos:
+						</p>
+						<br />
+						<ol>
+							<li class="fragment"><code>ssh_key.pub</code> - clave publica</li>
+							<li class="fragment"><code>ssh_key.ppk</code> - clave privada</li>
+							<li class="fragment"><code>ssh_key.txt</code> - Información de las claves para el servidor GIT</li>
+						</ol>		
+					</section>
+					<section>
+						<h2>Creación de las claves SSH</h2>
+						<p>
+							Una vez creadas las claves SSH, debemos informar al servidor GIT de las mismas para que nos permita el acceso:
+						</p>
+						<br />
+						<a href="#" class="image">
+							<img width="95%" height="95%" src="images/addssh.gif" alt="Añadir clave SSH" />
+						</a>		
+					</section>					
 				</section>
-				
+
 				<section>
+					<section>
+						<h2>Clonado de un Repositorio</h2>
+						<p>
+							Es la primera operación a realizar sobre un repositorio.
+							Clonar significa realizar una copia de todo el contenido del repositorio que se encuentra en el servidor GIT en nuestro PC.
+						</p>
+						<br />
+						<p>
+							A diferencia de otros sistemas (SVN), se obtiene una copia completa del repositorio del servidor, de forma que se podrá trabajar
+							sin necesidad de conexión.
+						</p>
+						<br />
+						<pre>
+							<code data-trim contenteditable>
+git clone git@git.connectis-ict.es:fjordan/git-training.git
+							</code>
+						</pre>
+					</section>
 					<section>
 						<h2>Clonado de un Repositorio con SourceTree</h2>
-						
+						<p>
+							Se debe utilizar el botón de la barra de herramientas "Clone / New".
+						</p>
+						<br />
+						<a href="#" class="image">
+							<img width="70%" height="70%" src="images/Clone.png" alt="Clonar repositorio" />
+						</a>
 					</section>
 				</section>
 				
