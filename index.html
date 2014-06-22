@@ -224,7 +224,8 @@
 						</p>
 						<ul>
 							<li><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Suite Putty</a> (Windows)</li>
-							<li><a href="http://www.sourcetreeapp.com/" target="_blank">SourceTree</a> (Windows / Mac)</li>
+							<li><a href="http://www.sourcetreeapp.com/" target="_blank">SourceTree</a> (Windows / Mac) - Cliente</li>
+							<li><a href="http://git-scm.com/download/win" target="_blank">GIT Command line tools</li>
 						</ul>
 					</section>
 					<section>
@@ -346,9 +347,14 @@
 
 				<section>
 					<section>
-						<h2>Clonado de un Repositorio</h2>
+						<h2>Operaciones básicas (I)</h2>
+						<h3>Obtener un repositorio: clonado</h3>
 						<p>
-							Es la primera operación a realizar sobre un repositorio.
+							Es la primera operación a realizar sobre un repositorio. Para obtener una copia de un repositorio existente al que se desea contribuir el comando 
+							a utilizar es <strong>clone</strong>.
+						</p>
+						<br />
+						<p>
 							Clonar significa realizar una copia de todo el contenido del repositorio que se encuentra en el servidor GIT en nuestro PC.
 						</p>
 						<br />
@@ -356,18 +362,21 @@
 							A diferencia de otros sistemas (SVN), se obtiene una copia completa del repositorio del servidor, de forma que se podrá trabajar
 							sin necesidad de conexión.
 						</p>
-						<br />
 						<pre>
 							<code data-trim contenteditable>
+mkdir git-training
+cd git-training							
 git clone git@git.connectis-ict.es:fjordan/git-training.git
 							</code>
 						</pre>
 					</section>
 					<section>
-						<h2>Clonado de un Repositorio con SourceTree</h2>
+						<h2>Operaciones básicas (I)</h2>
+						<h3>Clonado con SourceTree</h3>
 						<p>
 							Se debe utilizar el botón de la barra de herramientas "Clone / New".
 						</p>
+						<a href="#" class="image"><img width="80px" height="58px" src="images/BotonClone.png" alt="Botón Clonar repositorio" /></a>
 						<br />
 						<a href="#" class="image">
 							<img width="70%" height="70%" src="images/Clone.png" alt="Clonar repositorio" />
@@ -377,17 +386,401 @@ git clone git@git.connectis-ict.es:fjordan/git-training.git
 				
 				<section>
 					<section>
-						<h2>Operaciones disponibles con GIT</h2>
-						Explicar las operaciones de clonado, commit, push, pull, checkout, merge / rebase...
+						<h2>Operaciones básicas (II)</h2>
+						<h3>Estado de los archivos</h3>
+						<p>
+							Tu principal herramienta para determinar qué archivos están en qué estado es el comando <strong>git status</strong>. 
+							Si ejecutas este comando justo después de clonar un repositorio, deberías ver algo así:
+						</p>
+						<pre>
+							<code data-trim contenteditable>	
+cd git-training							
+git status
+# On branch master
+nothing to commit, working directory clean
+							</code>
+						</pre>
+						<p>
+							Esto significa que tienes un directorio de trabajo limpio —en otras palabras, no tienes archivos bajo seguimiento y modificados—. GIT tampoco ve ningún archivo que no esté bajo seguimiento, o estaría listado ahí. Por último, el comando te dice en qué rama estás. Por ahora, esa rama siempre es "master", que es la predeterminada.
+						</p>						
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (II)</h2>
+						<h3>Estado de los archivos con SourceTree</h3>
+						TODO !!
 					</section>
 				</section>
 				
 				<section>
 					<section>
-						<h2>Operaciones GIT con SourceTree</h2>
-						Explicar las operaciones de clonado, commit, push, pull, checkout, merge... realizadas con SourceTree
+						<h2>Operaciones básicas (III)</h2>
+						<h3>Seguimiento de archivos</h3>
+						<p>
+							Para empezar el seguimiento de un nuevo archivo se usa el comando<br /><strong>git add</strong>.<br />
+							Iniciaremos el seguimiento del archivo README ejecutando esto:
+						</p>
+						<pre>
+							<code data-trim contenteditable>	
+touch README						
+cd git-training							
+git add README
+							</code>
+						</pre>
+						<p>
+							Si vuelves a ejecutar el comando git status, verás que tu README está ahora bajo seguimiento y preparado:
+						</p>	
+						<pre>
+							<code data-trim contenteditable>							
+git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#
+#   new file:   README
+#
+							</code>
+						</pre>						
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (III)</h2>
+						<h3>Seguimiento de archivos con SourceTree</h3>
+						TODO !!
 					</section>
 				</section>
+				
+				<section>
+					<section>
+						<h2>Operaciones básicas (IV)</h2>
+						<h3>Modificar archivos</h3>
+						<p>
+							Vamos a modificar un archivo que ya estuviese bajo seguimiento. 
+							Si, por ejemplo, modificamos el archivo MiArchivo.txt que ya está bajo seguimiento, y ejecutamos el comando <strong>git status</strong> de nuevo, veremos algo así:
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#
+#   new file:   README
+#
+# Changes not staged for commit:
+#   (use "git add &lt;file&gt;..." to update what will be committed)
+#
+#   modified:   MiArchivo.txt
+#
+							</code>
+						</pre>										
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (IV)</h2>
+						<h3>Modificar archivos</h3>
+						<p>
+							El archivo <strong>MiArchivo.txt</strong> aparece bajo la cabecera "Modificados pero no actualizados" ("Changes not staged for commit") —esto significa que un archivo bajo seguimiento ha sido modificado en el directorio de trabajo, pero no ha sido preparado todavía—. 
+						</p>
+						<p>
+							Para prepararlo, ejecuta el comando<br /><strong>git add</strong><br />y volvemos a ejecutar <strong>git status</strong>:
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ git add MiArchivo.txt
+$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#
+#   new file:   README
+#   modified:   MiArchivo.txt
+#
+							</code>
+						</pre>										
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (IV)</h2>
+						<h3>Modificar archivos con SourceTree</h3>
+						TODO !!
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Operaciones básicas (V)</h2>
+						<h3>Ignorar archivos</h3>
+						<p>
+							A menudo tendrás un tipo de archivos que no quieras que GIT añada automáticamente o te muestre como no versionado. 
+							Suelen ser archivos generados automáticamente, como archivos de log, o archivos generados por tu compilador. 
+						</p>
+						<p>
+							Para estos casos puedes crear un archivo llamado <strong>.gitignore</strong>, en el que listas los patrones de nombres que deseas que sean ignorados. 
+							por ejemplo:
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ cat .gitignore
+*.sh
+*.class
+target/
+							</code>
+						</pre>			
+					</section>
+					<section>
+						<h2>Operaciones básicas (V)</h2>
+						<h3>Ignorar archivos: reglas</h3>
+						<ol>
+							<li>las líneas en blanco o que comienzan por # son ignoradas.</li>
+							<li>Se pueden usar patrones para indicar nombres de archivos o directorios.</li>
+							<li>Se pueden ignorar directorios completos añadiendo / al final</li>
+							<li>Se puede negar un patrón añadiendo una exclamación ! al principio.</li>
+						</ol>
+						<pre>
+							<code data-trim contenteditable>							
+# un comentario – esta línea es ignorada
+# no permitir archivos con extensión .a
+*.a
+# autorizar el archivo lib.a, incluso aunque no se permitan los archivos .a
+!lib.a
+# ignorar el archivo TODO que está en el raíz, pero no otros (por ejemplo subdir/TODO)
+/TODO
+# ignorar todos los archivos en la carpeta build/
+build/
+# ignorar los archivos txt (ejemplo: doc/notes.txt) en el primer nivel de la carpeta, pero permitir doc/server/arch.txt
+doc/*.txt
+# ignorar todos los archivos .txt de la carpeta doc/
+doc/**/*.txt
+							</code>
+						</pre>
+					</section>					
+					
+					<section>
+						<h2>Operaciones básicas (V)</h2>
+						<h3>Ignorar archivos con SourceTree</h3>
+						TODO !!
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Operaciones básicas (VI)</h2>
+						<h3>Confirmar cambios</h3>
+						<p>
+							Ahora que el área de preparación está como tú quieres, podemos confirmar los cambios. Hay que recordar que cualquier cosa que esté sin preparar no se incluirá ne la confirmación de archivos.
+						</p>
+						<br />
+						<p>
+							La forma más fácil de confirmar es escribiendo<br /><strong>git commit -m &lt;comentario&gt;</strong>:
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ git commit -m "Story 182: Fix benchmarks for speed"
+[master]: created 463dc4f: "Fix benchmarks for speed"
+ 2 files changed, 3 insertions(+), 0 deletions(-)
+ create mode 100644 README
+							</code>
+						</pre>										
+					</section>
+													
+					<section>
+						<h2>Operaciones básicas (VI)</h2>
+						<h3>Confirmar cambios con SourceTree</h3>
+						TODO !!
+					</section>
+				</section>												
+								
+				<section>
+					<section>
+						<h2>Operaciones básicas (VII)</h2>
+						<h3>¿Qué es una rama en GIT?</h3>
+						<p>
+							En cada commit, GIT almacena un punto de control que conserva: un puntero a la copia puntual de los contenidos, metadatos del autor y el mensaje. 
+							Con cada commit, GIT realiza una fotografía del estado actual del repositorio.
+						</p>
+						<a href="#" class="image">
+							<img width="50%" height="50%" src="images/18333fig0302-tn.png" alt="Ramas en GIT" />
+						</a>
+						<blockquote>
+							Una rama Git es simplemente un puntero móvil apuntando a una de esas confirmaciones. La rama por defecto de Git es la rama <strong>master</strong>.
+						</blockquote>
+					</section>
+								
+					<section>
+						<h2>Operaciones básicas (VII)</h2>
+						<h3>Crear ramas</h3>
+						<p>
+							Con GIT podemos crear ramas fácilmente gracias al comando:<br /><strong>git branch &lt;nombre&gt;</strong>
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ git branch testing
+							</code>
+						</pre>	
+						<a href="images/18333fig0305-tn.png" class="image">
+							<img width="40%" height="40%" src="images/18333fig0305-tn.png" alt="Crear Ramas en GIT" />
+						</a>
+						
+						<blockquote>
+							IMPORTANTE! Este comando sólo crea una nueva rama, no nos sitúa en ella. 
+						</blockquote>	
+
+						<aside class="notes">
+							Explicar el puntero HEAD: E sun puntero que indica a GIT en que rama se encuentra el usuario en cada momento.
+						</aside>						
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (VII)</h2>
+						<h3>Ramas con SourceTree</h3>
+						TODO !!
+					</section>
+				</section>
+				<!-- TODO: Hablar del PUSH / PULL / MERGE / CHECKOUT -->
+				<section>
+					<section>
+						<h2>Operaciones básicas (VIII)</h2>
+						<h3>Cambios entre ramas</h3>
+						<p>
+							Para pasar de una rama a otra, utilizaremos el comando<br /><strong>git checkout &lt;rama&gt;</strong>
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ git checkout testing
+							</code>
+						</pre>
+						<a href="#" class="image">
+							<img width="40%" height="40%" src="images/18333fig0306-tn.png" alt="Cambiar entre ramas" />
+						</a>
+					</section>
+								
+					<section>
+						<h2>Operaciones básicas (VIII)</h2>
+						<h3>Commit sobre ramas</h3>
+						<p>
+							A partir de este momento, cualquier commit que se realice será sobre la rama activa, en nuestro caso "testing"
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ vim test.rb
+$ git commit -a -m 'made a change'
+							</code>
+						</pre>	
+						<a href="images/18333fig0307-tn.png" class="image">
+							<img width="50%" height="50%" src="images/18333fig0307-tn.png" alt="Crear Ramas en GIT" />
+						</a>	
+
+						<aside class="notes">
+							Explicar que estos gráficos de GIT, las flechas se leen en dirección contraria.
+						</aside>						
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (VIII)</h2>
+						<h3>Cambio de rama</h3>
+						<p>
+							¿Qué sucede si ahora queremos volver a la rama anterior "master"?
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ git checkout master
+							</code>
+						</pre>	
+						<a href="images/18333fig0308-tn.png" class="image">
+							<img width="60%" height="60%" src="images/18333fig0308-tn.png" alt="Crear Ramas en GIT" />
+						</a>	
+
+						<aside class="notes">
+							Explicar que en este momento estamos "por detrás" del ultimo commit realizado y que la información enviada .
+						</aside>						
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (VIII)</h2>
+						<h3>Commit sobre ramas</h3>
+						<p>
+							Si hacemos algún cambio sobre la rama actual... ¿donde se almacenará? ¿cómo quedará nuestro repositorio?
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ vim test.java
+$ git commit -a -m 'hacemos algunos cambios'
+							</code>
+						</pre>	
+						<a href="images/18333fig0309-tn.png" class="image">
+							<img width="45%" height="45%" src="images/18333fig0309-tn.png" alt="Crear Ramas en GIT" />
+						</a>							
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (VIII)</h2>
+						<h3>Ramas con SourceTree</h3>
+						TODO !!
+					</section>
+				</section>
+				
+				<!-- TAGS -->
+				<section>
+					<section>
+						<h2>Operaciones básicas (IX)</h2>
+						<h3>Listar etiquetas</h3>
+						<p>
+							Con GIT se pueden crear etiquetas (marcas) en puntos específicos de la historia del repositorio. Para ello utilizaremos el comando <strong>git tag</strong>. Por ejemplo, para listar las etiquetas del repositorio actual:
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ git tag
+v0.1
+v1.3
+							</code>
+						</pre>	
+						<p>
+							O podemos buscar una etiqueta utilizando un patrón de búsqueda: <strong>git tag -l &lt:patrón&gt;</strong>
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ git tag -l 'v1.4.2.*'
+v1.4.2.1
+v1.4.2.2
+v1.4.2.3
+v1.4.2.4
+							</code>
+						</pre>						
+					</section>
+								
+					<section>
+						<h2>Operaciones básicas (IX)</h2>
+						<h3>Crear etiquetas</h3>
+						<p>
+							Con GIT podemos crear etiquetas en nuestra rama de trabajo gracias al comando:<br /><strong>git tag -a &lt;nombre&gt; -m &lt;mensaje&gt;</strong>
+						</p>
+						<pre>
+							<code data-trim contenteditable>							
+$ git tag -a v1.4 -m 'my version 1.4'
+$ git tag
+v0.1
+v1.3
+v1.4
+							</code>
+						</pre>	
+						<p>
+							Este tipo de etiquetas se denominan <italic>etiquetas anotadas</italic>, se almacenan como objetos complejos en la base de datos de GIT: 
+							tienen checksum, mensaje de etiquetado, fecha, autor, etc...
+						</p>											
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (IX)</h2>
+						<h3>Etiquetas con SourceTree</h3>
+						TODO !!
+					</section>
+				</section>
+				
+				
+				
+				
+				
 				
 				<section>
 					<section>
