@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Connectis ICT - Curso GIT</title>
+		<title>Curso Básico de GIT</title>
 
 		<meta name="description" content="Curso de introducción a GIT">
 		<meta name="author" content="Fernando Jordán Silva">
@@ -190,7 +190,7 @@
 					<section>
 						<h2>Tres estados (I).</h2>
 						<p>
-							Git tiene tres estados principales en los que se pueden encontrar tus archivos: <strong>confirmado</strong> (committed), <strong>modificado</strong> (modified), y <strong>preparado</strong> (staged).
+							GIT tiene tres estados principales en los que se pueden encontrar tus archivos: <strong>confirmado</strong> (committed), <strong>modificado</strong> (modified), y <strong>preparado</strong> (staged).
 						</p>
 						<br />
 						<ul>
@@ -408,7 +408,24 @@ nothing to commit, working directory clean
 					<section>
 						<h2>Operaciones básicas (II)</h2>
 						<h3>Estado de los archivos con SourceTree</h3>
-						TODO !!
+						<p>
+							Conocer el estado de los archivos en SourceTree es muy sencillo: Una vez seleccionado el repositorio con el que queremos trabajar, tendremos dos formas de verlo:
+						</p>
+						<br />
+						<ul>
+							<li>
+								En la vista "Log / History" nos aparecerán todos los archivos nuevos o modificados bajo el registro "Uncommited changes".
+								<br />
+								<center>
+								<a href="#" class="image">
+									<img width="507px" src="images/EstadoEnSourceTree.png" alt="Estado en SourceTree" />
+								</a>
+								</center>
+							</li>
+							<li>En la vista "File Status nos aparecerán todos los archivos nuevos o modificados en la zona de "Working Copy Changes".</li>
+						</ul>
+						<br />
+						
 					</section>
 				</section>
 				
@@ -446,7 +463,16 @@ git status
 					<section>
 						<h2>Operaciones básicas (III)</h2>
 						<h3>Seguimiento de archivos con SourceTree</h3>
-						TODO !!
+						<p>
+							Para realizar el seguimiento de un archivo nuevo con SourceTree, únicamente necesitamos pulsar el botón "Add".
+						</p>
+						<br />
+						<p>
+							Esta acción añadirá todos los archivos sobre los que NO se realice seguimiento, no se podrá realizar una selección individual.
+						</p>
+						<a href="#" class="image">
+							<img width="60px" src="images/AddSourceTree.png" alt="Seguimiento en SourceTree" />
+						</a>
 					</section>
 				</section>
 				
@@ -503,7 +529,18 @@ $ git status
 					<section>
 						<h2>Operaciones básicas (IV)</h2>
 						<h3>Modificar archivos con SourceTree</h3>
-						TODO !!
+						<p>
+							Al modificar los archivos, en SourceTree nos aparecerán como pendientes de ser enviados ( "Uncommited changes" ).
+						</p>
+						<br />
+						<p>
+							Mientras no sean enviados, la herramienta queda a la espera y va añadiendo al mismo commit todos los archivos que sean modificados.
+						</p>
+						<center>
+							<a href="#" class="image">
+								<img width="507px" src="images/EstadoEnSourceTree.png" alt="Estado en SourceTree" />
+							</a>
+						</center>
 					</section>
 				</section>
 				
@@ -559,7 +596,12 @@ doc/**/*.txt
 					<section>
 						<h2>Operaciones básicas (V)</h2>
 						<h3>Ignorar archivos con SourceTree</h3>
-						TODO !!
+						<p>
+							Para poder ignorar archivos, tenemos que modificar las propiedades del proyecto:
+						</p>
+						<a href="images/AddIgnoreSourceTree.gif" target="_blank" class="image">
+							<img width="80%" src="images/AddIgnoreSourceTree.gif" alt="Ignorar archivos SourceTree" />
+						</a>
 					</section>
 				</section>
 				
@@ -587,7 +629,9 @@ $ git commit -m "Story 182: Fix benchmarks for speed"
 					<section>
 						<h2>Operaciones básicas (VI)</h2>
 						<h3>Confirmar cambios con SourceTree</h3>
-						TODO !!
+						<a href="images/CommitSourceTree.gif" target="_blank" class="image">
+							<img width="80%" src="images/CommitSourceTree.gif" alt="Confirmar archivos SourceTree" />
+						</a>
 					</section>
 				</section>												
 								
