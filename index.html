@@ -160,18 +160,19 @@
 					<section>
 						<h2>Casi todas las operaciones son locales.</h2>
 						<p>
-							La mayoría de las operaciones en Git sólo necesitan archivos y recursos locales para operar. Por ejemplo:
+							La mayoría de las operaciones en GIT sólo necesitan archivos y recursos locales para operar. Por ejemplo:
 						</p>
+						<br />
 						<ul>
-							<li>Por ejemplo, para navegar por la historia del proyecto, Git no necesita salir al servidor para obtener la historia y mostrártela, simplemente la lee directamente de tu base de datos local</li>
+							<li>Para navegar por la historia del proyecto, GIT no necesita salir al servidor para obtener la historia y mostrártela, simplemente la lee directamente de tu base de datos local</li>
 							<li>También significa que hay muy poco que no puedas hacer si estás desconectado o sin VPN</li>
 						</ul>
 					</section>
 					<section>
 						<h2>Tiene integridad.</h2>
 						<p>
-							Todo en Git es verificado mediante el <strong>checksum</strong> antes de ser almacenado, y es identificado a partir de ese momento
-							mediante dicha suma. Esto significa que es imposible cambiar los contenidos de cualquier archivo o directorio sin que Git lo sepa.
+							Todo en GIT es verificado mediante el <strong>checksum</strong> antes de ser almacenado, y es identificado a partir de ese momento
+							mediante dicha suma. Esto significa que es imposible cambiar los contenidos de cualquier archivo o directorio sin que GIT lo sepa.
 						</p>
 						<p>
 							De hecho, de forma interna, GIT guarda todo no por el nombre del archivo, si no por el hash de dicho archivo.
@@ -180,11 +181,11 @@
 					<section>
 						<h2>Sólo se añade información.</h2>
 						<p>
-							Cuando realizas acciones en Git, casi todas ellas sólo añaden información a la base de datos de Git. Es muy difícil conseguir que 
+							Cuando realizas acciones en GIT, casi todas ellas sólo añaden información a la base de datos de GIT. Es muy difícil conseguir que 
 							el sistema haga algo que no se pueda deshacer, o que de algún modo borre información.
 						</p>
 						<p>
-							Esto hace que usar Git sea muy agradable, porque sabemos que podemos experimentar sin peligro de fastidiar gravemente las cosas.
+							Esto hace que usar GIT sea muy agradable, porque sabemos que podemos experimentar sin peligro de fastidiar gravemente las cosas.
 						</p>
 					</section>
 					<section>
@@ -207,7 +208,7 @@
 						<ol>
 							<li>Modificas una serie de archivos en tu directorio de trabajo.</li>
 							<li>Preparas los archivos, añadiendolos a tu área de preparación.</li>
-							<li>Confirmas los cambios, lo que toma los archivos tal y como están en el área de preparación, y almacena esas instantáneas de manera permanente en tu directorio de Git.</li>
+							<li>Confirmas los cambios, lo que toma los archivos tal y como están en el área de preparación, y almacena esas instantáneas de manera permanente en tu directorio de GIT.</li>
 						</ol>
 						<br /><br />
 						<a href="#" class="image">
@@ -225,7 +226,7 @@
 						<ul>
 							<li><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Suite Putty</a> (Windows)</li>
 							<li><a href="http://www.sourcetreeapp.com/" target="_blank">SourceTree</a> (Windows / Mac) - Cliente</li>
-							<li><a href="http://git-scm.com/download/win" target="_blank">GIT Command line tools</li>
+							<li><a href="http://git-scm.com/download/win" target="_blank">GIT Command line tools</a></li>
 						</ul>
 					</section>
 					<section>
@@ -647,7 +648,7 @@ $ git commit -m "Story 182: Fix benchmarks for speed"
 							<img width="50%" height="50%" src="images/18333fig0302-tn.png" alt="Ramas en GIT" />
 						</a>
 						<blockquote>
-							Una rama Git es simplemente un puntero móvil apuntando a una de esas confirmaciones. La rama por defecto de Git es la rama <strong>master</strong>.
+							Una rama GIT es simplemente un puntero móvil apuntando a una de esas confirmaciones. La rama por defecto de Git es la rama <strong>master</strong>.
 						</blockquote>
 					</section>
 								
@@ -691,7 +692,7 @@ $ git branch testing
 							<img width="605px" src="images/RamasSourceTreeDialogo.png" alt="Crear Ramas en GIT" />
 						</a>
 						<blockquote>
-							Más adelante veremos una forma más eficiente de trabajar con Ramas y Etiquetas gracias a Git Flow.
+							Más adelante veremos una forma más eficiente de trabajar con Ramas y Etiquetas gracias a GIT Flow.
 						</blockquote>
 					</section>
 				</section>
@@ -774,7 +775,39 @@ $ git commit -a -m 'hacemos algunos cambios'
 					<section>
 						<h2>Operaciones básicas (VIII)</h2>
 						<h3>Ramas con SourceTree</h3>
-						TODO !!
+						<p>
+							Con SourceTree podemos situarnos sobre las ramas fácilmente, pero primero tenemos que realizar un seguimiento local de la rama remota:
+						</p>
+						<a href="images/CheckoutRemoteSourceTree.png" class="image">
+							<img width="440px" src="images/CheckoutRemoteSourceTree.png" alt="Checkouts Ramas en GIT" />
+						</a>	
+						<p>
+							Tras mostrar el diálogo de confirmación del nombre de la rama, tendremos en local la rama remota y estaremos situados en ella.
+						</p>
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (VIII)</h2>
+						<h3>Ramas con SourceTree</h3>
+						<p>
+							Pero si ya hemos hecho en algún momento un seguimiento de la rama y queremos situarnos sobre ella,
+							sólo tenemos que hacer doble clic sobre el nombre de la rama o seleccionar el menu contextual "Checkout branch &lt;nombre&gt;...".
+						</p>
+						<a href="images/CheckoutLocalSourceTree.png" class="image">
+							<img width="350px" src="images/CheckoutLocalSourceTree.png" alt="Checkouts Ramas en GIT" />
+						</a>						
+					</section>
+					
+					<section>
+						<h2>Operaciones básicas (VIII)</h2>
+						<h3>Ramas con SourceTree</h3>
+						<br />
+						<blockquote>
+							Podemos saber en todo momento la rama en la que estamos ya que su nombre está seleccionado en negrita.
+						</blockquote>
+						<a href="images/CheckoutSelectedSourceTree.png" class="image">
+							<img width="300px" src="images/CheckoutSelectedSourceTree.png" alt="Checkouts Ramas en GIT" />
+						</a>						
 					</section>
 				</section>
 				
@@ -844,7 +877,7 @@ v1.4
 							<img width="40%" src="images/EtiquetaSourceTreeDialogo.png" alt="Crear Etiquetas en GIT" />
 						</a>
 						<blockquote>
-							Más adelante veremos una forma más eficiente de trabajar con Ramas y Etiquetas gracias a Git Flow.
+							Más adelante veremos una forma más eficiente de trabajar con Ramas y Etiquetas gracias a GIT Flow.
 						</blockquote>
 					</section>
 				</section>
